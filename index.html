@@ -479,7 +479,8 @@
     </div>
 
     <script>
-        const APP_STORAGE_KEY = 'NEXUS_SWARM_V2';
+        const APP_STORAGE_KEY = 'NEXUS_SWARM_V3';
+        const LEGACY_STORAGE_KEYS = ['NEXUS_SWARM_V2'];
         let ventures = [];
         let globalRevenue = 0;
 
@@ -549,6 +550,90 @@
             document.getElementById('modal').style.display = 'none';
         }
 
+
+        function createWorkflowNode(id, label, agentId, dependsOn = []) {
+            return {
+                id,
+                label,
+                agentId,
+                status: 'pending',
+                dependsOn,
+                retryCount: 0,
+                startedAt: null,
+                completedAt: null
+            };
+        }
+
+        function createVenture({ name, goal, budget, time }) {
+            return {
+                id: Date.now(),
+                name,
+                goal,
+                budget,
+                time,
+                progress: 0,
+                status: 'Initializing',
+                revenue: 0,
+                agents: [
+                    { id: 'ceo', role: 'CEO', icon: '👔', active: true },
+                    { id: 'cto', role: 'CTO', icon: '💻', active: true },
+                    { id: 'cmo', role: 'CMO', icon: '📣', active: false },
+                    { id: 'cfo', role: 'CFO', icon: '⚖️', active: false }
+                ],
+                workflow: [
+                    createWorkflowNode('planning', 'Planning', 'ceo'),
+                    createWorkflowNode('research', 'Research', 'cto', ['planning']),
+                    createWorkflowNode('generation', 'Generation', 'cto', ['research']),
+                    createWorkflowNode('validation', 'Validation', 'cfo', ['generation']),
+                    createWorkflowNode('deployment', 'Deployment', 'ceo', ['validation']),
+                    createWorkflowNode('monitoring', 'Monitoring', 'cmo', ['deployment'])
+                ],
+                logs: [`[SYSTEM] Swarm protocol initiated at ${time}...`]
+            };
+        }
+
+        const SwarmRuntime = {
+            getRunnableNodes(venture) {
+                if(!venture.workflow) return [];
+
+                return venture.workflow.filter(node => {
+                    const dependenciesComplete = node.dependsOn.every(dependencyId => {
+                        const dependency = venture.workflow.find(candidate => candidate.id === dependencyId);
+                        return dependency && dependency.status === 'completed';
+                    });
+
+                    return dependenciesComplete && ['pending', 'running'].includes(node.status);
+                });
+            },
+
+            tick(venture) {
+                if(!venture.workflow) return;
+
+                const runnableNode = this.getRunnableNodes(venture)[0];
+                if(!runnableNode) return;
+
+                if(runnableNode.status === 'pending') {
+                    runnableNode.status = 'running';
+                    runnableNode.startedAt = new Date().toISOString();
+                    venture.status = `${runnableNode.label} Running`;
+                    this.recordTransition(venture, runnableNode, 'pending', 'running');
+                    return;
+                }
+
+                if(runnableNode.status === 'running') {
+                    runnableNode.status = 'completed';
+                    runnableNode.completedAt = new Date().toISOString();
+                    venture.status = runnableNode.id === 'monitoring' ? 'Monitoring' : `${runnableNode.label} Complete`;
+                    this.recordTransition(venture, runnableNode, 'running', 'completed');
+                }
+            },
+
+            recordTransition(venture, node, fromStatus, toStatus) {
+                venture.logs.push(`[WORKFLOW] ${node.label} transitioned ${fromStatus} → ${toStatus}`);
+                if(venture.logs.length > 20) venture.logs.shift();
+            }
+        };
+
         function deployVenture() {
             const name = document.getElementById('v-name').value.trim();
             const goal = document.getElementById('v-goal').value.trim();
@@ -560,23 +645,7 @@
                 return;
             }
 
-            const newVenture = {
-                id: Date.now(),
-                name,
-                goal,
-                budget,
-                time,
-                progress: 0,
-                status: 'Initializing',
-                revenue: 0,
-                agents: [
-                    { role: 'CEO', icon: '👔', active: true },
-                    { role: 'CTO', icon: '💻', active: true },
-                    { role: 'CMO', icon: '📣', active: false },
-                    { role: 'CFO', icon: '⚖️', active: false }
-                ],
-                logs: [`[SYSTEM] Swarm protocol initiated at ${time}...`]
-            };
+            const newVenture = createVenture({ name, goal, budget, time });
 
             ventures.push(newVenture);
             saveData();
@@ -658,33 +727,17 @@
         function startGlobalSimulation() {
             setInterval(() => {
                 ventures.forEach(v => {
-                    // Simulate progress
-                    if(v.progress < 100) {
-                        v.progress += Math.random() * 5;
-                        if(v.progress > 100) v.progress = 100;
+                    SwarmRuntime.tick(v);
+
+                    if(v.workflow) {
+                        const completedNodes = v.workflow.filter(node => node.status === 'completed').length;
+                        v.progress = Math.round((completedNodes / v.workflow.length) * 100);
+                        v.agents.forEach(agent => {
+                            agent.active = v.workflow.some(node => node.agentId === agent.id && node.status === 'running');
+                        });
                     }
-                    
-                    // Simulate agent activation
-                    if(Math.random() > 0.7) {
-                        const randomAgent = v.agents[Math.floor(Math.random() * v.agents.length)];
-                        randomAgent.active = !randomAgent.active;
-                    }
-                    
-                    // Simulate revenue
-                    v.revenue += Math.random() * 100;
-                    
-                    // Add log entry
-                    const logMessages = [
-                        `Neural weights optimized +${(Math.random() * 0.5).toFixed(2)}%`,
-                        `Arbitrage opportunity detected: ${(Math.random() * 10).toFixed(2)}bps`,
-                        `Task batch processed: ${Math.floor(Math.random() * 500)} operations`,
-                        `Market volatility scan complete`,
-                        `Cache memory defragmented`,
-                        `Swarm consensus reached`
-                    ];
-                    
-                    v.logs.push(`[AUTO] ${logMessages[Math.floor(Math.random() * logMessages.length)]}`);
-                    if(v.logs.length > 20) v.logs.shift();
+
+                    v.revenue += v.progress === 100 ? 25 : 0;
                 });
                 
                 saveData();
@@ -692,16 +745,41 @@
             }, 3000);
         }
 
+
+        function migrateVenture(venture) {
+            if(venture.workflow) return venture;
+
+            const migrated = createVenture({
+                name: venture.name,
+                goal: venture.goal,
+                budget: venture.budget,
+                time: venture.time
+            });
+
+            return {
+                ...migrated,
+                ...venture,
+                agents: migrated.agents,
+                workflow: migrated.workflow,
+                logs: [
+                    ...(venture.logs || []),
+                    '[SYSTEM] Venture upgraded to v3 workflow schema.'
+                ].slice(-20)
+            };
+        }
+
         function saveData() {
             localStorage.setItem(APP_STORAGE_KEY, JSON.stringify({ ventures, globalRevenue }));
         }
 
         function loadData() {
-            const saved = localStorage.getItem(APP_STORAGE_KEY);
+            const saved = localStorage.getItem(APP_STORAGE_KEY) || LEGACY_STORAGE_KEYS
+                .map(key => localStorage.getItem(key))
+                .find(Boolean);
             if(saved) {
                 try {
                     const data = JSON.parse(saved);
-                    ventures = data.ventures || [];
+                    ventures = (data.ventures || []).map(venture => migrateVenture(venture));
                     globalRevenue = data.globalRevenue || 0;
                 } catch(e) {
                     console.error('Failed to load data', e);
