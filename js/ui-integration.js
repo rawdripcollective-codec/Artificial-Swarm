@@ -1,5 +1,5 @@
 /**
- * Nexus Swarm v3 - Updated UI Integration
+ * Artificial Swarm v3 - Updated UI Integration
  * Enhanced index.html with Phase 2-3 support
  * Add these styles to your CSS and scripts to head
  */

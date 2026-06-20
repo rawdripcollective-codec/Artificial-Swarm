@@ -1,5 +1,5 @@
 /**
- * Nexus Swarm v3 - Analytics Dashboard UI
+ * Artificial Swarm v3 - Analytics Dashboard UI
  * Real-time metrics visualization and performance intelligence
  */
 

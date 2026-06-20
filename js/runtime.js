@@ -1,5 +1,5 @@
 /**
- * Nexus Swarm v3 - Integrated Swarm Runtime
+ * Artificial Swarm v3 - Integrated Swarm Runtime
  * Orchestrates all components: Ventures, Agents, Workflows, Memory, Scheduler
  */
 

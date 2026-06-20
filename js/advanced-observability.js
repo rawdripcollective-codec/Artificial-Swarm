@@ -1,5 +1,5 @@
 /**
- * Nexus Swarm v3 - Advanced Observability Dashboard
+ * Artificial Swarm v3 - Advanced Observability Dashboard
  * Real-time metrics, performance analytics, and system intelligence
  */
 

@@ -1,5 +1,5 @@
 /**
- * Nexus Swarm v3 - Workflow Graph Visualization
+ * Artificial Swarm v3 - Workflow Graph Visualization
  * DAG visualization and mission command center
  */
 

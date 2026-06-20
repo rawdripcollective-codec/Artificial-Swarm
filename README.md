@@ -1,10 +1,10 @@
-# Nexus Swarm 💠
+# Artificial Swarm 💠
 
 **Agentic AI Incubator - A futuristic dashboard for managing autonomous AI ventures**
 
 ## Overview
 
-Nexus Swarm is an innovative web-based platform designed to orchestrate and manage autonomous AI agent swarms. Each "venture" represents an independent AI system capable of performing autonomous tasks, generating revenue, and evolving through simulated agent teams.
+Artificial Swarm is an innovative web-based platform designed to orchestrate and manage autonomous AI agent swarms. Each "venture" represents an independent AI system capable of performing autonomous tasks, generating revenue, and evolving through simulated agent teams.
 
 ## Features
 
@@ -21,13 +21,13 @@ Nexus Swarm is an innovative web-based platform designed to orchestrate and mana
 
 ### Option 1: Live Demo
 Visit the live GitHub Pages deployment:
-[Nexus Swarm Live Demo](https://rawdripcollective-codec.github.io/Nexus-Swarm/)
+[Artificial Swarm Live Demo](https://rawdripcollective-codec.github.io/Artificial-Swarm/)
 
 ### Option 2: Local Development
 1. Clone the repository:
 ```bash
-git clone https://github.com/rawdripcollective-codec/Nexus-Swarm.git
-cd Nexus-Swarm
+git clone https://github.com/rawdripcollective-codec/Artificial-Swarm.git
+cd Artificial-Swarm
 ```
 
 2. Open `index.html` in your browser:
@@ -125,7 +125,7 @@ index.html
 
 ## Data Persistence
 
-Venture data is automatically saved to LocalStorage under the key `NEXUS_SWARM_V2`. Each venture object contains:
+Venture data is automatically saved to LocalStorage under the key `ARTIFICIAL_SWARM_V2`. Each venture object contains:
 
 ```javascript
 {

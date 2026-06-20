@@ -1,5 +1,5 @@
 /**
- * Nexus Swarm v3 - Specialized Agent Framework
+ * Artificial Swarm v3 - Specialized Agent Framework
  * Defines role-based agents that handle specific operational areas
  */
 

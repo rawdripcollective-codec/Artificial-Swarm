@@ -1,5 +1,5 @@
 /**
- * Nexus Swarm v3 - Workflow Engine
+ * Artificial Swarm v3 - Workflow Engine
  * DAG-based workflow execution with parallel tasks, retries, and branching
  */
 

@@ -1,5 +1,5 @@
 /**
- * Nexus Swarm v3 - Comprehensive Analytics Configuration
+ * Artificial Swarm v3 - Comprehensive Analytics Configuration
  * Integration guide for Phase 4-5 analytics and persistence
  */
 

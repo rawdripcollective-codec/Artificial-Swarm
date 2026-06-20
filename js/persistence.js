@@ -1,10 +1,10 @@
 /**
- * Nexus Swarm v3 - IndexedDB Persistence Layer
+ * Artificial Swarm v3 - IndexedDB Persistence Layer
  * Persistent storage for ventures, agents, tasks, and memories
  */
 
 class PersistenceManager {
-  constructor(dbName = 'NexusSwarm', version = 1) {
+  constructor(dbName = 'ArtificialSwarm', version = 1) {
     this.dbName = dbName;
     this.version = version;
     this.db = null;

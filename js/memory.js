@@ -1,5 +1,5 @@
 /**
- * Nexus Swarm v3 - Memory System
+ * Artificial Swarm v3 - Memory System
  * Provides short-term, long-term, and vector-based memory storage
  */
 

@@ -1,5 +1,5 @@
 /**
- * Nexus Swarm v3 - Tool Registry
+ * Artificial Swarm v3 - Tool Registry
  * Dynamic tool management and capability discovery
  */
 

@@ -1,5 +1,5 @@
 /**
- * Nexus Swarm v3 - System Intelligence Engine
+ * Artificial Swarm v3 - System Intelligence Engine
  * Predictive analytics, anomaly detection, and optimization recommendations
  */
 

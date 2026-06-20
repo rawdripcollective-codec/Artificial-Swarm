@@ -1,5 +1,5 @@
 /**
- * Nexus Swarm v3 - Core Venture Schema
+ * Artificial Swarm v3 - Core Venture Schema
  * Defines the enhanced venture structure with agent swarms, memory, and workflow capabilities
  */
 

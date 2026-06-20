@@ -1,5 +1,5 @@
 /**
- * Nexus Swarm v3 - Observability System
+ * Artificial Swarm v3 - Observability System
  * Live metrics, health monitoring, and agent activity tracking
  */
 

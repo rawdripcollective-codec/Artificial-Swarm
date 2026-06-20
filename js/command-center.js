@@ -1,5 +1,5 @@
 /**
- * Nexus Swarm v3 - Mission Command Center UI
+ * Artificial Swarm v3 - Mission Command Center UI
  * Advanced dashboard for swarm operations monitoring and control
  */
 

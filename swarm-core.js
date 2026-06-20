@@ -1,5 +1,5 @@
 /**
- * Nexus Swarm v3 - Core Engine
+ * Artificial Swarm v3 - Core Engine
  * Agent Operating System Foundation
  */
 
@@ -15,7 +15,7 @@ class SwarmCore {
   }
 
   init() {
-    console.log('[SWARM] Initializing Nexus Swarm v3 Core Engine');
+    console.log('[SWARM] Initializing Artificial Swarm v3 Core Engine');
     this.scheduler = setInterval(() => this.tick(), 1000);
   }
 
@@ -82,7 +82,7 @@ class SwarmCore {
 
   shutdown() {
     clearInterval(this.scheduler);
-    console.log('[SWARM] Nexus Swarm Core Engine shutdown');
+    console.log('[SWARM] Artificial Swarm Core Engine shutdown');
   }
 }
 

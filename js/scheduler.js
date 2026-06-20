@@ -1,5 +1,5 @@
 /**
- * Nexus Swarm v3 - Task Scheduler
+ * Artificial Swarm v3 - Task Scheduler
  * Manages task queues, priorities, and execution scheduling
  */
 
