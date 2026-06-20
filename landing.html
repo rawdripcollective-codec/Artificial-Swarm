@@ -549,6 +549,328 @@
         font-size: 0.8rem;
         font-family: var(--mono);
     }
+
+    /* ==================== PHASE 2.0 — APPLICATION LAYER ==================== */
+
+    /* PHASE 2.1 — SWARM BUILDER WIZARD */
+    #swarm-builder { padding: 100px 5%; }
+
+    .builder-container {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .builder-step {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(20px);
+        border-radius: 24px;
+        padding: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        opacity: 0.5;
+    }
+
+    .builder-step.active { opacity: 1; border-color: var(--accent-primary); }
+
+    .builder-options { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    .builder-options button {
+        padding: 12px 18px;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        background: linear-gradient(90deg, #00f2ff, #7000ff);
+        color: white;
+        font-weight: 600;
+    }
+
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    .skill-tags span {
+        padding: 10px 16px;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 999px;
+        font-size: 0.85rem;
+    }
+
+    #generateSwarm {
+        padding: 14px 24px;
+        border: none;
+        border-radius: 12px;
+        background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        color: #050508;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    /* PHASE 2.2 — LIVE AGENT WORKSPACE */
+    .workspace-grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .workspace-panel {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 24px;
+        padding: 24px;
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--border);
+    }
+
+    .workspace-panel ul { list-style: none; margin: 0; padding: 0; }
+
+    .workspace-panel li {
+        padding: 10px 0;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.9rem;
+        color: var(--text-dim);
+    }
+
+    .workspace-panel li:last-child { border-bottom: none; }
+
+    .chat-line {
+        padding: 10px;
+        margin-bottom: 10px;
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 12px;
+        font-size: 0.9rem;
+    }
+
+    @media (max-width: 760px) {
+        .workspace-grid { grid-template-columns: 1fr; }
+    }
+
+    /* PHASE 2.3 — KNOWLEDGE VAULT */
+    .vault-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .vault-card {
+        padding: 24px;
+        text-align: center;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border);
+        color: var(--text-dim);
+        font-size: 0.9rem;
+    }
+
+    .vault-card h3 { margin: 10px 0 0; color: var(--accent-primary); font-family: var(--mono); }
+
+    /* PHASE 2.4 — USER DASHBOARD (CSS not provided — built to match) */
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 24px;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .dashboard-card {
+        text-align: center;
+        padding: 28px;
+        border-radius: 24px;
+        background: var(--glass);
+        border: 1px solid var(--border);
+        color: var(--text-dim);
+        font-size: 0.9rem;
+    }
+
+    .dashboard-card h1 {
+        margin: 10px 0 0;
+        font-size: 2.2rem;
+        font-family: var(--mono);
+        color: var(--accent-primary);
+    }
+
+    /* PHASE 2.5 — AUTHENTICATION PORTAL (CSS not provided — built to match) */
+    .auth-card {
+        max-width: 380px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        background: var(--glass);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 32px;
+    }
+
+    .auth-card input {
+        padding: 14px 16px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text-main);
+        font-family: var(--sans);
+        font-size: 0.95rem;
+    }
+
+    .auth-card button {
+        padding: 14px;
+        border: none;
+        border-radius: 12px;
+        background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        color: #050508;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    /* PHASE 2.6 — TEAM COLLABORATION (CSS not provided — built to match) */
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 22px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .team-card {
+        padding: 26px;
+        border-radius: 20px;
+        background: var(--glass);
+        border: 1px solid var(--border);
+        text-align: center;
+    }
+
+    .team-card span {
+        display: block;
+        margin-top: 10px;
+        color: var(--text-dim);
+        font-size: 0.82rem;
+        font-family: var(--mono);
+    }
+
+    /* PHASE 2.7 — MISSION TIMELINE (CSS not provided — built to match) */
+    .timeline {
+        max-width: 600px;
+        margin: 0 auto;
+        border-left: 2px solid var(--border);
+        padding-left: 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+    }
+
+    .timeline-event {
+        position: relative;
+        padding: 14px 18px;
+        background: var(--glass);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        font-size: 0.9rem;
+    }
+
+    .timeline-event::before {
+        content: '';
+        position: absolute;
+        left: -36px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent-primary);
+        box-shadow: 0 0 0 4px rgba(0, 242, 255, 0.15);
+    }
+
+    /* PHASE 2.8 — DEPLOYMENT CENTER (CSS not provided — built to match) */
+    .deploy-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .deploy-card {
+        text-align: center;
+        padding: 28px 18px;
+        border-radius: 20px;
+        background: var(--glass);
+        border: 1px solid var(--border);
+        font-weight: 600;
+        cursor: pointer;
+        transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .deploy-card:hover { border-color: var(--accent-primary); transform: translateY(-3px); }
+
+    /* PHASE 2.9 — BILLING & USAGE (CSS not provided — built to match) */
+    .billing-card {
+        max-width: 420px;
+        margin: 0 auto;
+        padding: 32px;
+        border-radius: 24px;
+        background: var(--glass);
+        border: 1px solid var(--border);
+        text-align: center;
+    }
+
+    .billing-card h3 {
+        margin: 18px 0 6px;
+        font-family: var(--mono);
+        font-size: 0.8rem;
+        letter-spacing: 0.05em;
+        color: var(--text-dim);
+    }
+
+    .billing-card h3:first-child { margin-top: 0; }
+    .billing-card p { margin: 0 0 6px; font-size: 1.1rem; }
+
+    /* PHASE 2.10 — AI COMMAND CONSOLE (centerpiece; CSS not provided — built to match) */
+    #command-console { padding: 100px 5%; }
+
+    .console-container {
+        max-width: 700px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .console-output {
+        font-family: var(--mono);
+        font-size: 0.88rem;
+        background: #000002;
+        border: 1px solid var(--accent-primary);
+        border-radius: 16px;
+        padding: 22px;
+        min-height: 120px;
+        color: var(--success);
+        white-space: pre-wrap;
+        box-shadow: inset 0 0 30px rgba(0, 242, 255, 0.08);
+    }
+
+    .console-container textarea {
+        padding: 14px 16px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text-main);
+        font-family: var(--sans);
+        min-height: 80px;
+        resize: vertical;
+    }
+
+    .console-container button {
+        padding: 14px;
+        border: none;
+        border-radius: 12px;
+        background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        color: #050508;
+        font-weight: 600;
+        cursor: pointer;
+    }
 </style>
 </head>
 <body>
@@ -809,6 +1131,177 @@
     </div>
 </section>
 
+<!-- ==================== PHASE 2.0 — APPLICATION LAYER ==================== -->
+
+<!-- PHASE 2.1 — SWARM BUILDER WIZARD -->
+<section id="swarm-builder">
+    <div class="section-header">
+        <span class="eyebrow">PHASE 2.1</span>
+        <h2>Swarm Builder Wizard</h2>
+        <p>
+            Design custom AI swarms with specialized agents,
+            skills, tools, and deployment objectives.
+        </p>
+    </div>
+    <div class="builder-container">
+        <div class="builder-step active">
+            <h3>Step 1</h3>
+            <p>Select Swarm Type</p>
+            <div class="builder-options">
+                <button>Research</button>
+                <button>Developer</button>
+                <button>Marketing</button>
+                <button>Startup</button>
+            </div>
+        </div>
+        <div class="builder-step">
+            <h3>Step 2</h3>
+            <p>Select Skills</p>
+            <div class="skill-tags">
+                <span>OSINT</span>
+                <span>Code Architect</span>
+                <span>Trend Hunter</span>
+                <span>Analyst</span>
+            </div>
+        </div>
+        <div class="builder-step">
+            <h3>Step 3</h3>
+            <button id="generateSwarm">Generate Swarm</button>
+        </div>
+    </div>
+</section>
+
+<!-- PHASE 2.2 — LIVE AGENT WORKSPACE -->
+<section id="agent-workspace">
+    <div class="section-header">
+        <span class="eyebrow">PHASE 2.2</span>
+        <h2>Live Agent Workspace</h2>
+    </div>
+    <div class="workspace-grid">
+        <div class="workspace-panel">
+            <h3>Active Agents</h3>
+            <ul>
+                <li>Planner Agent</li>
+                <li>Research Agent</li>
+                <li>Analysis Agent</li>
+                <li>Writer Agent</li>
+            </ul>
+        </div>
+        <div class="workspace-panel">
+            <h3>Agent Conversation</h3>
+            <div id="agentChat">
+                <div class="chat-line">Planner: Mission accepted.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PHASE 2.3 — KNOWLEDGE VAULT -->
+<section id="vault">
+    <div class="section-header">
+        <span class="eyebrow">PHASE 2.3</span>
+        <h2>Knowledge Vault</h2>
+    </div>
+    <div class="vault-grid">
+        <div class="vault-card">📄 Documents<h3>1,847</h3></div>
+        <div class="vault-card">🧠 Memories<h3>384,991</h3></div>
+        <div class="vault-card">🔍 Embeddings<h3>14.8M</h3></div>
+    </div>
+</section>
+
+<!-- PHASE 2.4 — USER DASHBOARD -->
+<section id="dashboard">
+    <div class="section-header">
+        <span class="eyebrow">PHASE 2.4</span>
+        <h2>User Dashboard</h2>
+    </div>
+    <div class="dashboard-grid">
+        <div class="dashboard-card">Active Missions<h1>48</h1></div>
+        <div class="dashboard-card">Swarms Created<h1>127</h1></div>
+        <div class="dashboard-card">Agent Hours<h1>32,401</h1></div>
+    </div>
+</section>
+
+<!-- PHASE 2.5 — AUTHENTICATION PORTAL -->
+<section id="auth">
+    <div class="section-header">
+        <span class="eyebrow">PHASE 2.5</span>
+        <h2>Authentication</h2>
+    </div>
+    <div class="auth-card">
+        <input type="email" placeholder="Email" />
+        <input type="password" placeholder="Password" />
+        <button>Sign In</button>
+    </div>
+</section>
+
+<!-- PHASE 2.6 — TEAM COLLABORATION -->
+<section id="teams">
+    <div class="section-header">
+        <span class="eyebrow">PHASE 2.6</span>
+        <h2>Team Collaboration</h2>
+    </div>
+    <div class="team-grid">
+        <div class="team-card">Engineering Team<span>12 Members</span></div>
+        <div class="team-card">Research Team<span>8 Members</span></div>
+        <div class="team-card">Marketing Team<span>6 Members</span></div>
+    </div>
+</section>
+
+<!-- PHASE 2.7 — MISSION TIMELINE -->
+<section id="timeline">
+    <div class="section-header">
+        <span class="eyebrow">PHASE 2.7</span>
+        <h2>Mission Timeline</h2>
+    </div>
+    <div class="timeline">
+        <div class="timeline-event">Mission Created</div>
+        <div class="timeline-event">Research Started</div>
+        <div class="timeline-event">Analysis Complete</div>
+        <div class="timeline-event">Final Report Generated</div>
+    </div>
+</section>
+
+<!-- PHASE 2.8 — DEPLOYMENT CENTER -->
+<section id="deployment-center">
+    <div class="section-header">
+        <span class="eyebrow">PHASE 2.8</span>
+        <h2>Deployment Center</h2>
+    </div>
+    <div class="deploy-grid">
+        <div class="deploy-card">Cloud Deployment</div>
+        <div class="deploy-card">Local Deployment</div>
+        <div class="deploy-card">Hybrid Deployment</div>
+    </div>
+</section>
+
+<!-- PHASE 2.9 — BILLING & USAGE -->
+<section id="billing">
+    <div class="section-header">
+        <span class="eyebrow">PHASE 2.9</span>
+        <h2>Billing &amp; Usage</h2>
+    </div>
+    <div class="billing-card">
+        <h3>Current Plan</h3>
+        <p>Professional</p>
+        <h3>Credits Used</h3>
+        <p>284,000 / 500,000</p>
+    </div>
+</section>
+
+<!-- PHASE 2.10 — AI COMMAND CONSOLE (centerpiece) -->
+<section id="command-console">
+    <div class="section-header">
+        <span class="eyebrow">PHASE 2.10</span>
+        <h2>AI Command Console</h2>
+    </div>
+    <div class="console-container">
+        <div class="console-output">> Swarm Ready<br>> Awaiting Instructions</div>
+        <textarea placeholder="Deploy a research swarm to analyze this week's AI startups..."></textarea>
+        <button id="executeMission">Execute Mission</button>
+    </div>
+</section>
+
 <footer class="site-footer">
     <div class="footer-top">
         <div class="footer-logo">💠 ARTIFICIAL SWARM</div>
@@ -931,6 +1424,24 @@
         log.prepend(div);
         if (log.children.length > 8) log.removeChild(log.lastChild);
     }, 2500);
+    // ---- PHASE 2.10 — AI Command Console ----
+    const executeBtn = document.getElementById("executeMission");
+
+    if (executeBtn) {
+        executeBtn.addEventListener("click", () => {
+            const output = document.querySelector(".console-output");
+
+            output.innerHTML += "<br>> Mission Accepted";
+
+            setTimeout(() => {
+                output.innerHTML += "<br>> Agents Deployed";
+            }, 1500);
+
+            setTimeout(() => {
+                output.innerHTML += "<br>> Mission Running";
+            }, 3000);
+        });
+    }
 </script>
 
 </body>
